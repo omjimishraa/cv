@@ -1,10 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
+    
     <!-- Primary SEO Meta Tags -->
     <!-- <title>Om Ji Mishra | Software Consultant & .NET/Angular Expert</title>
     <meta name="title" content="Om Ji Mishra | Software Consultant & .NET/Angular Expert">
@@ -94,19 +93,131 @@
 
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+        
+        :root {
+            --primary: #1e40af;
+            --primary-light: #eff6ff;
+            --text-main: #1f2937;
+            --text-light: #6b7280;
+            --border: #e5e7eb;
+        }
 
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f8fafc;
+            color: var(--text-main);
+            line-height: 1.6;
+        }
+
+        .page {
+            width: 210mm;
+            min-height: 297mm;
+            padding: 15mm 18mm;
+            margin: 1.5rem auto;
+            background: white;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+            position: relative;
+        }
+
+        @media print {
+            body { background: none; margin: 0; }
+            .page { margin: 0; box-shadow: none; width: 100%; page-break-after: always; }
+            .no-print { display: none; }
+            .print-page-break { 
+                page-break-before: always !important; 
+                break-before: page !important;
+                margin-top: 0 !important;
+            }
+        }
+
+        /* Header Styles */
+        header {
+            border-bottom: 4px solid var(--primary);
+            padding-bottom: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        h1 { font-size: 28pt; font-weight: 800; color: #0f172a; letter-spacing: -0.04em; line-height: 1; }
+        
+        .section-header {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-top: 1.5rem;
+            margin-bottom: 0.75rem;
+            background: var(--primary-light);
+            padding: 0.4rem 1rem;
+            border-radius: 6px;
+        }
+
+        h2 { 
+            font-size: 11pt; 
+            font-weight: 800; 
+            color: var(--primary); 
+            text-transform: uppercase; 
+            letter-spacing: 0.1em;
+        }
+
+        h3 { font-size: 12pt; font-weight: 700; color: #111827; }
+        
+        .job-meta { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 2px; }
+        .job-title { font-weight: 700; color: var(--primary); font-size: 10.5pt; }
+        .company-name { font-weight: 700; color: #374151; font-size: 11pt; }
+        .date-location { font-size: 9pt; color: var(--text-light); font-weight: 500; }
+
+        /* Project Cards */
+        .project-card {
+            border-left: 3px solid var(--border);
+            padding-left: 1rem;
+            margin-bottom: 1.25rem;
+            transition: border-color 0.3s;
+        }
+        .project-card:hover { border-color: var(--primary); }
+        
+        .tech-pill {
+            font-size: 7.5pt;
+            background: #f1f5f9;
+            color: #1e40af;
+            padding: 1px 7px;
+            border-radius: 4px;
+            font-weight: 700;
+            display: inline-block;
+            margin-right: 4px;
+            margin-top: 4px;
+            border: 1px solid #bfdbfe;
+        }
+
+        .bullet-list { list-style-type: none; padding-left: 0; font-size: 9.5pt; color: #4b5563; }
+        .bullet-list li { position: relative; padding-left: 1.25rem; margin-bottom: 2px; }
+        .bullet-list li::before { 
+            content: "→"; 
+            position: absolute; 
+            left: 0; 
+            color: var(--primary); 
+            font-weight: bold; 
+        }
+
+        .skill-group { margin-bottom: 0.4rem; font-size: 9pt; display: flex; align-items: flex-start; }
+        .skill-label { font-weight: 800; color: #1e293b; min-width: 145px; font-size: 8.5pt; text-transform: uppercase; letter-spacing: 0.02em; }
+        .skill-values { color: #334155; flex: 1; font-weight: 500; }
+
+        .contact-item { display: flex; align-items: center; gap: 6px; font-size: 9.5pt; color: #475569; font-weight: 500; }
+        .contact-item i { color: var(--primary); width: 14px; }
+        
+        b { color: #111827; font-weight: 700; }
+    </style>
 </head>
-
 <body>
 
     <!-- Professional Floating Action Button -->
     <div class="no-print fixed bottom-8 right-8 z-50 group">
-        <button onclick="window.print()"
-            class="bg-blue-600 text-white w-14 h-14 rounded-full shadow-2xl hover:bg-blue-700 hover:scale-110 active:scale-95 transition-all duration-300 flex items-center justify-center relative ring-4 ring-white shadow-[0_0_20px_rgba(37,99,235,0.4)]">
+        <button onclick="window.print()" class="bg-blue-600 text-white w-14 h-14 rounded-full shadow-2xl hover:bg-blue-700 hover:scale-110 active:scale-95 transition-all duration-300 flex items-center justify-center relative ring-4 ring-white shadow-[0_0_20px_rgba(37,99,235,0.4)]">
             <i class="fas fa-file-arrow-down text-xl"></i>
             <!-- Hover Tooltip -->
-            <span
-                class="absolute right-16 bg-gray-900 text-white text-[10px] font-bold uppercase tracking-wider px-3 py-2 rounded shadow-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 whitespace-nowrap pointer-events-none translate-x-4 group-hover:translate-x-0">
+            <span class="absolute right-16 bg-gray-900 text-white text-[10px] font-bold uppercase tracking-wider px-3 py-2 rounded shadow-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 whitespace-nowrap pointer-events-none translate-x-4 group-hover:translate-x-0">
                 Download PDF Resume
             </span>
         </button>
@@ -118,15 +229,12 @@
             <div class="flex justify-between items-end">
                 <div>
                     <h1>OM JI MISHRA</h1>
-                    <p class="text-blue-600 font-bold tracking-widest uppercase text-sm mt-1">Software Consultant & Team
-                        Lead</p>
+                    <p class="text-blue-600 font-bold tracking-widest uppercase text-sm mt-1">Software Consultant & Team Lead</p>
                 </div>
                 <div class="space-y-1 text-right">
                     <div class="contact-item justify-end"><span>+91 6307804706</span> <i class="fas fa-phone"></i></div>
-                    <div class="contact-item justify-end"><span>omji22655@gmail.com</span> <i
-                            class="fas fa-envelope"></i></div>
-                    <div class="contact-item justify-end"><span>Gurgaon, HR, India</span> <i
-                            class="fas fa-location-dot"></i></div>
+                    <div class="contact-item justify-end"><span>omji22655@gmail.com</span> <i class="fas fa-envelope"></i></div>
+                    <div class="contact-item justify-end"><span>Gurgaon, HR, India</span> <i class="fas fa-location-dot"></i></div>
                 </div>
             </div>
         </header>
@@ -137,13 +245,7 @@
                 <h2>Executive Summary</h2>
             </div>
             <p class="text-[9.5pt] text-gray-700 leading-relaxed px-1">
-                Strategic <b>Software Consultant</b> with <b>5+ years</b> of expertise in the <b>Microsoft Ecosystem</b>
-                and modern full-stack architectures. Currently driving digital transformation for global industry
-                leaders at <b>Deloitte India</b>. Specialist in <b>Cloud-native development (Azure)</b>, <b>Production
-                    Monitoring (Splunk, Dynatrace)</b>, and specialized medical protocols (<b>HL7/ASTM</b>).
-                Beginner-level <b>Generative AI Developer</b> and <b>AI Agent Architect</b> with certifications in OCI
-                and Oracle AI stacks. Expert at leading teams and building high-availability enterprise applications
-                from <b>scratch to production</b>.
+                Strategic <b>Software Consultant</b> with <b>5+ years</b> of expertise in the <b>Microsoft Ecosystem</b> and modern full-stack architectures. Currently driving digital transformation for global industry leaders at <b>Deloitte India</b>. Specialist in <b>Cloud-native development (Azure)</b>, <b>Production Monitoring (Splunk, Dynatrace)</b>, and specialized medical protocols (<b>HL7/ASTM</b>). Beginner-level <b>Generative AI Developer</b> and <b>AI Agent Architect</b> with certifications in OCI and Oracle AI stacks. Expert at leading teams and building high-availability enterprise applications from <b>scratch to production</b>.
             </p>
         </section>
 
@@ -153,27 +255,13 @@
                 <h2>Technical Arsenal</h2>
             </div>
             <div class="px-1 space-y-1">
-                <div class="skill-group"><span class="skill-label">Languages:</span> <span
-                        class="skill-values"><b>C#</b>, <b>Python</b>, <b>NodeJs</b>, TypeScript, JavaScript (ES6+),
-                        C++, C</span></div>
-                <div class="skill-group"><span class="skill-label">Web/Backend:</span> <span
-                        class="skill-values"><b>.NET Core</b>, ASP.NET MVC, <b>Web API</b>, Web Forms, WCF,
-                        <b>Microservices</b></span></div>
-                <div class="skill-group"><span class="skill-label">Frontend:</span> <span
-                        class="skill-values"><b>Angular 15</b>, Angular 8+, TypeScript, jQuery, Ajax, Bootstrap 5</span>
-                </div>
-                <div class="skill-group"><span class="skill-label">AI & Gen AI:</span> <span
-                        class="skill-values"><b>Generative AI (OCI)</b>, <b>AI Agents</b>, LLMs, RAG, Prompt
-                        Engineering, Model Fine-tuning</span></div>
-                <div class="skill-group"><span class="skill-label">Cloud/DevOps:</span> <span
-                        class="skill-values"><b>Azure</b> (Web Apps, VM, Functions), <b>CI/CD</b>, Git, GitLab,
-                        JIRA</span></div>
-                <div class="skill-group"><span class="skill-label">Sec & Monitoring:</span> <span
-                        class="skill-values"><b>Dynatrace</b>, <b>Splunk</b>, <b>SonarQube</b>, <b>Snyk</b>
-                        Vulnerability Management</span></div>
-                <div class="skill-group"><span class="skill-label">Data & Protocols:</span> <span
-                        class="skill-values"><b>SQL Server</b> (2015-22), <b>HL7</b>, <b>ASTM</b>, TCP/IP, <b>SAP
-                            S4Hana/Ariba APIs</b></span></div>
+                <div class="skill-group"><span class="skill-label">Languages:</span> <span class="skill-values"><b>C#</b>, <b>Python</b>, <b>NodeJs</b>, TypeScript, JavaScript (ES6+), C++, C</span></div>
+                <div class="skill-group"><span class="skill-label">Web/Backend:</span> <span class="skill-values"><b>.NET Core</b>, ASP.NET MVC, <b>Web API</b>, Web Forms, WCF, <b>Microservices</b></span></div>
+                <div class="skill-group"><span class="skill-label">Frontend:</span> <span class="skill-values"><b>Angular 15</b>, Angular 8+, TypeScript, jQuery, Ajax, Bootstrap 5</span></div>
+                <div class="skill-group"><span class="skill-label">AI & Gen AI:</span> <span class="skill-values"><b>Generative AI (OCI)</b>, <b>AI Agents</b>, LLMs, RAG, Prompt Engineering, Model Fine-tuning</span></div>
+                <div class="skill-group"><span class="skill-label">Cloud/DevOps:</span> <span class="skill-values"><b>Azure</b> (Web Apps, VM, Functions), <b>CI/CD</b>, Git, GitLab, JIRA</span></div>
+                <div class="skill-group"><span class="skill-label">Sec & Monitoring:</span> <span class="skill-values"><b>Dynatrace</b>, <b>Splunk</b>, <b>SonarQube</b>, <b>Snyk</b> Vulnerability Management</span></div>
+                <div class="skill-group"><span class="skill-label">Data & Protocols:</span> <span class="skill-values"><b>SQL Server</b> (2015-22), <b>HL7</b>, <b>ASTM</b>, TCP/IP, <b>SAP S4Hana/Ariba APIs</b></span></div>
             </div>
         </section>
 
@@ -182,7 +270,7 @@
                 <i class="fas fa-briefcase text-blue-600"></i>
                 <h2>Professional Experience</h2>
             </div>
-
+            
             <div class="mb-4">
                 <div class="job-meta">
                     <span class="company-name">Deloitte India</span>
@@ -193,8 +281,7 @@
                     <span class="date-location">Gurgaon, India</span>
                 </div>
                 <ul class="bullet-list mt-1">
-                    <li>Directing the end-to-end lifecycle of high-traffic applications, including development using
-                        <b>Micro-Frontend (MFE)</b>, <b>Microservices</b> technology.</li>
+                    <li>Directing the end-to-end lifecycle of high-traffic applications, including development using <b>Micro-Frontend (MFE)</b>, <b>Microservices</b> technology.</li>
                     <li>Orchestrating production stability through Dynatrace and Splunk real-time monitoring.</li>
                 </ul>
             </div>
@@ -209,11 +296,8 @@
                     <span class="date-location">Pune, India</span>
                 </div>
                 <ul class="bullet-list mt-1">
-                    <li>Architected and optimized <b>CAPEX/OPEX budget management</b> modules for international retail
-                        giants (MAF Dubai), enabling real-time financial tracking and automated invoicing.</li>
-                    <li>Collaborated on the development of country-wide supply chain inventory systems utilizing
-                        <b>Angular 11</b>, <b>.NET Core</b> and serverless event-driven workflows using <b>Azure
-                            Functions</b> for automated supplier fee deductions.</li>
+                    <li>Architected and optimized <b>CAPEX/OPEX budget management</b> modules for international retail giants (MAF Dubai), enabling real-time financial tracking and automated invoicing.</li>
+                    <li>Collaborated on the development of country-wide supply chain inventory systems utilizing <b>Angular 11</b>, <b>.NET Core</b> and serverless event-driven workflows using <b>Azure Functions</b> for automated supplier fee deductions.</li>
                 </ul>
             </div>
 
@@ -227,10 +311,8 @@
                     <span class="date-location">Meerut, India</span>
                 </div>
                 <ul class="bullet-list mt-1">
-                    <li>Led a 7-member cross-functional team in the end-to-end delivery of a comprehensive University
-                        ERP and Distance Learning LMS.</li>
-                    <li>Optimized database performance through complex <b>Stored Procedure</b> development and query
-                        tuning to support high-volume student registration cycles.</li>
+                    <li>Led a 7-member cross-functional team in the end-to-end delivery of a comprehensive University ERP and Distance Learning LMS.</li>
+                    <li>Optimized database performance through complex <b>Stored Procedure</b> development and query tuning to support high-volume student registration cycles.</li>
                 </ul>
             </div>
         </section>
@@ -244,18 +326,14 @@
                 <i class="fas fa-star text-blue-600"></i>
                 <h2>Professional Projects</h2>
             </div>
-
+            
             <div class="project-card">
                 <div class="flex justify-between items-baseline">
                     <h4 class="font-bold text-[10pt] text-gray-800">Dell Online Sales (dell.com)</h4>
                 </div>
-                <p class="text-[9.2pt] text-gray-600 mt-1">Led the modification of a global customer portal. Developed
-                    new modules using Angular 15 and managed the CI/CD pipeline from development to deployment for
-                    high-traffic environments.</p>
+                <p class="text-[9.2pt] text-gray-600 mt-1">Led the modification of a global customer portal. Developed new modules using Angular 15 and managed the CI/CD pipeline from development to deployment for high-traffic environments.</p>
                 <div class="mt-1">
-                    <span class="tech-pill">Angular 15</span> <span class="tech-pill">.NET Core</span> <span
-                        class="tech-pill">Python</span> <span class="tech-pill">Splunk</span> <span
-                        class="tech-pill">Dynatrace</span> <span class="tech-pill">SonarQube</span>
+                    <span class="tech-pill">Angular 15</span> <span class="tech-pill">.NET Core</span> <span class="tech-pill">Python</span> <span class="tech-pill">Splunk</span> <span class="tech-pill">Dynatrace</span> <span class="tech-pill">SonarQube</span>
                 </div>
             </div>
 
@@ -263,13 +341,9 @@
                 <div class="flex justify-between items-baseline">
                     <h4 class="font-bold text-[10pt] text-gray-800">CLIMS App (Tissue Preservation)</h4>
                 </div>
-                <p class="text-[9.2pt] text-gray-600 mt-1">Developed a laboratory automation system for preserving human
-                    cord tissues. Integrated testing machines using HL7 / ASTM and TCP/IP hardware protocols for
-                    real-time analysis.</p>
+                <p class="text-[9.2pt] text-gray-600 mt-1">Developed a laboratory automation system for preserving human cord tissues. Integrated testing machines using HL7 / ASTM and TCP/IP hardware protocols for real-time analysis.</p>
                 <div class="mt-1">
-                    <span class="tech-pill">Python</span> <span class="tech-pill">Angular</span> <span
-                        class="tech-pill">HL7 / ASTM</span> <span class="tech-pill">TCP/IP Protocols</span> <span
-                        class="tech-pill">RS-232</span>
+                    <span class="tech-pill">Python</span> <span class="tech-pill">Angular</span> <span class="tech-pill">HL7 / ASTM</span> <span class="tech-pill">TCP/IP Protocols</span> <span class="tech-pill">RS-232</span>
                 </div>
             </div>
 
@@ -277,68 +351,52 @@
                 <div class="flex justify-between items-baseline">
                     <h4 class="font-bold text-[10pt] text-gray-800">CAS AON (Supplier Management)</h4>
                 </div>
-                <p class="text-[9.2pt] text-gray-600 mt-1">Developed a comprehensive supplier management system
-                    integrated with SAP S4Hana and Ariba APIs via proprietary RESTful endpoints.</p>
+                <p class="text-[9.2pt] text-gray-600 mt-1">Developed a comprehensive supplier management system integrated with SAP S4Hana and Ariba APIs via proprietary RESTful endpoints.</p>
                 <div class="mt-1">
-                    <span class="tech-pill">.NET Web Forms</span> <span class="tech-pill">Angular</span> <span
-                        class="tech-pill">SAP APIs</span> <span class="tech-pill">Ariba Integration</span>
+                    <span class="tech-pill">.NET Web Forms</span> <span class="tech-pill">Angular</span> <span class="tech-pill">SAP APIs</span> <span class="tech-pill">Ariba Integration</span>
                 </div>
             </div>
         </section>
 
         <section>
-
+           
             <div class="project-card">
                 <h4 class="font-bold text-[10pt] text-gray-800">Budget Management System</h4>
-                <p class="text-[9.2pt] text-gray-600 mt-1">Architected a system to manage CAPEX/OPEX budget creation and
-                    automated invoicing using Azure Functions for scalable processing.</p>
+                <p class="text-[9.2pt] text-gray-600 mt-1">Architected a system to manage CAPEX/OPEX budget creation and automated invoicing using Azure Functions for scalable processing.</p>
                 <div class="mt-1">
-                    <span class="tech-pill">.NET Core</span> <span class="tech-pill">Angular 11</span> <span
-                        class="tech-pill">Azure Functions</span> <span class="tech-pill">SQL Server 2019</span>
+                    <span class="tech-pill">.NET Core</span> <span class="tech-pill">Angular 11</span> <span class="tech-pill">Azure Functions</span> <span class="tech-pill">SQL Server 2019</span>
                 </div>
             </div>
 
             <div class="project-card">
                 <h4 class="font-bold text-[10pt] text-gray-800">Supplier Fees Automation</h4>
-                <p class="text-[9.2pt] text-gray-600 mt-1">Automated complete fee deduction and supply chain workflows
-                    using NodeJs and Python for high-volume retail transactions.</p>
+                <p class="text-[9.2pt] text-gray-600 mt-1">Automated complete fee deduction and supply chain workflows using NodeJs and Python for high-volume retail transactions.</p>
                 <div class="mt-1">
-                    <span class="tech-pill">Python</span> <span class="tech-pill">NodeJs</span> <span
-                        class="tech-pill">.NET Core</span> <span class="tech-pill">Angular 11</span> <span
-                        class="tech-pill">Azure Functions</span>
+                    <span class="tech-pill">Python</span> <span class="tech-pill">NodeJs</span> <span class="tech-pill">.NET Core</span> <span class="tech-pill">Angular 11</span> <span class="tech-pill">Azure Functions</span>
                 </div>
             </div>
 
             <div class="project-card">
                 <h4 class="font-bold text-[10pt] text-gray-800">Hospital Management System</h4>
-                <p class="text-[9.2pt] text-gray-600 mt-1">Developed machine-interface modules in Python to read raw
-                    diagnostic data and auto-generate patient reports based on clinical data parsing.</p>
+                <p class="text-[9.2pt] text-gray-600 mt-1">Developed machine-interface modules in Python to read raw diagnostic data and auto-generate patient reports based on clinical data parsing.</p>
                 <div class="mt-1">
-                    <span class="tech-pill">Python</span> <span class="tech-pill">NodeJs</span> <span
-                        class="tech-pill">.NET Core</span> <span class="tech-pill">Web Services</span> <span
-                        class="tech-pill">SQL Server 2019</span>
+                    <span class="tech-pill">Python</span> <span class="tech-pill">NodeJs</span> <span class="tech-pill">.NET Core</span> <span class="tech-pill">Web Services</span> <span class="tech-pill">SQL Server 2019</span>
                 </div>
             </div>
 
             <div class="project-card">
                 <h4 class="font-bold text-[10pt] text-gray-800">Complete Distance Learning Program</h4>
-                <p class="text-[9.2pt] text-gray-600 mt-1">Built a scratch-to-production LMS portal with Razorpay
-                    Payment Gateway and Zoom API integration for live virtual classrooms.</p>
+                <p class="text-[9.2pt] text-gray-600 mt-1">Built a scratch-to-production LMS portal with Razorpay Payment Gateway and Zoom API integration for live virtual classrooms.</p>
                 <div class="mt-1">
-                    <span class="tech-pill">.NET Core</span> <span class="tech-pill">MVC</span> <span
-                        class="tech-pill">Razorpay API</span> <span class="tech-pill">Zoom Integration</span> <span
-                        class="tech-pill">Aadhaar API</span>
+                    <span class="tech-pill">.NET Core</span> <span class="tech-pill">MVC</span> <span class="tech-pill">Razorpay API</span> <span class="tech-pill">Zoom Integration</span> <span class="tech-pill">Aadhaar API</span>
                 </div>
             </div>
 
             <div class="project-card">
                 <h4 class="font-bold text-[10pt] text-gray-800">University Education System</h4>
-                <p class="text-[9.2pt] text-gray-600 mt-1">Managed complete Student Lifecycle and document verification
-                    via UIDAI Aadhaar API and automated mark sheet generation.</p>
+                <p class="text-[9.2pt] text-gray-600 mt-1">Managed complete Student Lifecycle and document verification via UIDAI Aadhaar API and automated mark sheet generation.</p>
                 <div class="mt-1">
-                    <span class="tech-pill">ASP.NET</span> <span class="tech-pill">C#</span> <span
-                        class="tech-pill">Aadhaar API</span> <span class="tech-pill">SQL Server 2019</span> <span
-                        class="tech-pill">Web API</span>
+                    <span class="tech-pill">ASP.NET</span> <span class="tech-pill">C#</span> <span class="tech-pill">Aadhaar API</span> <span class="tech-pill">SQL Server 2019</span> <span class="tech-pill">Web API</span>
                 </div>
             </div>
         </section>
@@ -355,39 +413,27 @@
             <div class="px-1 space-y-4">
                 <div class="flex justify-between items-start">
                     <div>
-                        <div class="font-bold text-[10.5pt] text-gray-800">Oracle Fusion AI Agent Studio Certified
-                            Foundations Associate</div>
-                        <div class="text-[9.5pt] text-gray-600">Oracle | <span
-                                class="font-semibold text-blue-600">Skills: AI Agents, Agent Orchestration, Oracle AI
-                                Stack</span></div>
-                        <div class="text-[8.5pt] text-gray-400 mt-1 font-mono">Credential ID:
-                            589A961B53517A3EC17DC2D1B3BC35F889DE20425F05B9CC408AE49DF61D5EBD</div>
+                        <div class="font-bold text-[10.5pt] text-gray-800">Oracle Fusion AI Agent Studio Certified Foundations Associate</div>
+                        <div class="text-[9.5pt] text-gray-600">Oracle | <span class="font-semibold text-blue-600">Skills: AI Agents, Agent Orchestration, Oracle AI Stack</span></div>
+                        <div class="text-[8.5pt] text-gray-400 mt-1 font-mono">Credential ID: 589A961B53517A3EC17DC2D1B3BC35F889DE20425F05B9CC408AE49DF61D5EBD</div>
                     </div>
                     <div class="date-location">Issued Nov 2025</div>
                 </div>
 
                 <div class="flex justify-between items-start">
                     <div>
-                        <div class="font-bold text-[10.5pt] text-gray-800">OCI Generative AI Professional Certification
-                        </div>
-                        <div class="text-[9.5pt] text-gray-600">Oracle | <span
-                                class="font-semibold text-blue-600">Skills: LLMs, RAG, Prompt Engineering, Model
-                                Fine-tuning, OCI GenAI Service</span></div>
-                        <div class="text-[8.5pt] text-gray-400 mt-1 font-mono italic">Credential: eCertificate_Gen_AI
-                        </div>
+                        <div class="font-bold text-[10.5pt] text-gray-800">OCI Generative AI Professional Certification</div>
+                        <div class="text-[9.5pt] text-gray-600">Oracle | <span class="font-semibold text-blue-600">Skills: LLMs, RAG, Prompt Engineering, Model Fine-tuning, OCI GenAI Service</span></div>
+                        <div class="text-[8.5pt] text-gray-400 mt-1 font-mono italic">Credential: eCertificate_Gen_AI</div>
                     </div>
                     <div class="date-location">Issued Jun 2024</div>
                 </div>
 
                 <div class="flex justify-between items-start">
                     <div>
-                        <div class="font-bold text-[10.5pt] text-gray-800">Python Professional Course Completion
-                            Certificate</div>
-                        <div class="text-[9.5pt] text-gray-600">Udemy | <span
-                                class="font-semibold text-blue-600">Skills: Python Programming, Data Structures, OOP,
-                                Scripting, Automation</span></div>
-                        <div class="text-[8.5pt] text-gray-400 mt-1 font-mono">Credential ID:
-                            UC-b67d7bd0-1022-4936-8675-c5bc2ecb3f65</div>
+                        <div class="font-bold text-[10.5pt] text-gray-800">Python Professional Course Completion Certificate</div>
+                        <div class="text-[9.5pt] text-gray-600">Udemy | <span class="font-semibold text-blue-600">Skills: Python Programming, Data Structures, OOP, Scripting, Automation</span></div>
+                        <div class="text-[8.5pt] text-gray-400 mt-1 font-mono">Credential ID: UC-b67d7bd0-1022-4936-8675-c5bc2ecb3f65</div>
                     </div>
                     <div class="date-location">Issued Jun 2024</div>
                 </div>
@@ -413,27 +459,26 @@
             </div>
             <div class="grid grid-cols-2 gap-x-12 gap-y-2 text-[9pt] px-1">
                 <div class="flex justify-between border-b border-gray-100 pb-1">
-                    <span class="font-bold text-gray-500">Languages:</span>
+                    <span class="font-bold text-gray-500">Languages:</span> 
                     <span class="text-gray-700">English, Hindi, Sanskrit</span>
                 </div>
                 <div class="flex justify-between border-b border-gray-100 pb-1">
-                    <span class="font-bold text-gray-500">Date of Birth:</span>
+                    <span class="font-bold text-gray-500">Date of Birth:</span> 
                     <span class="text-gray-700">30 Sep 2001</span>
                 </div>
                 <div class="flex justify-between border-b border-gray-100 pb-1">
-                    <span class="font-bold text-gray-500">Location:</span>
+                    <span class="font-bold text-gray-500">Location:</span> 
                     <span class="text-gray-700">Gurgaon, Haryana</span>
                 </div>
                 <div class="flex justify-between border-b border-gray-100 pb-1">
-                    <span class="font-bold text-gray-500">Hobbies:</span>
+                    <span class="font-bold text-gray-500">Hobbies:</span> 
                     <span class="text-gray-700">Chess, Reading Novel, Music</span>
                 </div>
             </div>
         </section>
 
         <footer class="mt-10 pt-6 border-t border-gray-200">
-            <p class="text-[9pt] text-gray-400 italic text-center mb-6">I hereby declare that all the information
-                provided above is true to the best of my knowledge.</p>
+            <p class="text-[9pt] text-gray-400 italic text-center mb-6">I hereby declare that all the information provided above is true to the best of my knowledge.</p>
             <div class="flex justify-between items-end">
                 <div class="text-[9.5pt] text-gray-600">
                     <p class="font-bold">Place: Gurgaon</p>
@@ -447,5 +492,4 @@
         </footer>
     </div>
 </body>
-
 </html>
