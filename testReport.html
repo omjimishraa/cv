@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OSTL Test Report</title>
+    <style>
+        /* Document Reset & Base Styles */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-color: #f4f4f4;
+            font-family: 'Times New Roman', Times, serif;
+            color: #000;
+            padding: 20px;
+            font-size: 13px;
+        }
+
+        /* A4 Page Container */
+        .page-container {
+            width: 100%;
+            max-width: 900px;
+            margin: 0 auto;
+            background-color: #fff;
+            padding: 30px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            position: relative;
+        }
+
+        /* Header Section */
+        .header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 5px;
+        }
+
+        .logo-box {
+            width: 18%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .logo-text {
+            font-family: Arial, Helvetica, sans-serif;
+            font-weight: bold;
+            font-size: 16px;
+            margin-top: -5px;
+            color: #4a4d5e;
+            letter-spacing: 1px;
+        }
+
+        .logo-subtext {
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 8px;
+            letter-spacing: 1px;
+            color: #666;
+        }
+
+        .title-box {
+            width: 82%;
+            background-color: #3b3e66;
+            color: #fff;
+            text-align: center;
+            padding: 12px 10px;
+            font-family: 'Arial Narrow', Arial, sans-serif;
+            font-size: 26px;
+            font-weight: bold;
+            letter-spacing: 0.5px;
+        }
+
+        .sub-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        .sub-header .empty-space { flex: 1; }
+        .sub-header .report-title { 
+            flex: 1; 
+            text-align: center; 
+            font-size: 18px; 
+            font-weight: bold; 
+        }
+        .sub-header .iso-cert { 
+            flex: 1; 
+            text-align: right; 
+        }
+        .sub-header .iso-cert span {
+            background-color: #76a53f;
+            color: white;
+            padding: 4px 12px;
+            font-weight: bold;
+            font-size: 13px;
+        }
+
+        /* Information Blocks */
+        .info-table {
+            width: 100%;
+            border-collapse: collapse;
+            border: 1px solid #000;
+            margin-bottom: 10px;
+        }
+
+        .info-table td {
+            width: 50%;
+            border: 1px solid #000;
+            padding: 6px 10px;
+            vertical-align: top;
+            line-height: 1.4;
+        }
+
+        .sample-info-box {
+            border: 1px solid #000;
+            padding: 6px 10px;
+            line-height: 1.4;
+        }
+
+        .table-title-bar {
+            border: 1px solid #000;
+            border-top: none;
+            text-align: center;
+            font-weight: bold;
+            padding: 4px;
+        }
+
+        /* Main Data Table */
+        .watermark-container {
+            position: relative;
+        }
+
+        .watermark {
+            position: absolute;
+            top: 45%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 160px;
+            color: rgba(0, 0, 0, 0.03);
+            font-family: 'Arial Black', Arial, sans-serif;
+            letter-spacing: 20px;
+            pointer-events: none;
+            z-index: 0;
+            white-space: nowrap;
+        }
+
+        .data-table {
+            width: 100%;
+            border-collapse: collapse;
+            border: 1px solid #000;
+            border-top: none;
+            text-align: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        .data-table th, .data-table td {
+            border: 1px solid #000;
+            padding: 6px;
+            vertical-align: middle;
+        }
+
+        .data-table th {
+            font-weight: bold;
+        }
+
+        .data-table td.text-left {
+            text-align: left;
+        }
+
+        .section-header {
+            font-weight: bold;
+            text-decoration: underline;
+            text-align: left;
+        }
+
+        /* Post Table Content */
+        .remarks {
+            margin-top: 10px;
+            font-weight: bold;
+        }
+
+        .end-report {
+            text-align: center;
+            font-weight: bold;
+            margin: 20px 0;
+        }
+
+        .page-num {
+            font-weight: bold;
+            margin-bottom: 40px;
+        }
+
+        /* Signatures Section */
+        .signatures {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            margin-bottom: 20px;
+            position: relative;
+        }
+
+        .sign-left, .sign-right {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .sign-text {
+            font-weight: bold;
+            font-family: Arial, sans-serif;
+            font-size: 14px;
+        }
+
+        .signature-cursive {
+            font-family: 'Brush Script MT', 'Lucida Handwriting', cursive;
+            font-size: 24px;
+            color: #2c3e50;
+            margin-bottom: 5px;
+        }
+
+        /* Stamp Stylings */
+        .stamp-container {
+            position: absolute;
+            right: 20px;
+            bottom: -10px;
+            opacity: 0.7;
+            pointer-events: none;
+        }
+
+        /* Footer Terms */
+        .footer-terms {
+            font-size: 10px;
+            font-family: Arial, Helvetica, sans-serif;
+            margin-bottom: 15px;
+            line-height: 1.3;
+        }
+
+        .footer-terms strong {
+            display: inline-block;
+            margin-right: 5px;
+        }
+
+        .footer-terms ol {
+            padding-left: 20px;
+            list-style-type: decimal;
+            margin-top: 2px;
+        }
+
+        /* Footer Banner */
+        .footer-banner {
+            background-color: #3b3e66;
+            color: white;
+            text-align: center;
+            padding: 10px;
+            font-size: 12px;
+            font-family: Arial, Helvetica, sans-serif;
+            line-height: 1.5;
+        }
+
+        /* Print Specific Styling */
+        @media print {
+            body { background-color: #fff; padding: 0; }
+            .page-container { box-shadow: none; max-width: 100%; padding: 0; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="page-container">
+    
+    <!-- Header -->
+    <div class="header">
+        <div class="logo-box">
+            <!-- Simulated overlapping OS logo with SVG -->
+            <svg width="80" height="40" viewBox="0 0 100 50">
+                <ellipse cx="40" cy="25" rx="22" ry="12" fill="none" stroke="#3b3e66" stroke-width="6"/>
+                <path d="M 45 15 C 65 10, 85 20, 65 30 C 45 40, 75 45, 95 35" fill="none" stroke="#76a53f" stroke-width="6"/>
+            </svg>
+            <div class="logo-text">OSTLPL</div>
+            <div class="logo-subtext">CHOOSE THE BEST</div>
+        </div>
+        <div class="title-box">
+            OM SWASTIK TESTING LABORATORY PVT. LTD.
+        </div>
+    </div>
+
+    <div class="sub-header">
+        <div class="empty-space"></div>
+        <div class="report-title">TEST REPORT</div>
+        <div class="iso-cert">
+            <span>ISO 9001:2015 Certified Laboratory</span>
+        </div>
+    </div>
+
+    <!-- Info Section -->
+    <table class="info-table">
+        <tr>
+            <td>
+                <b>Issued to:</b><br>
+                Shree Singaji Thermal Power Project<br>
+                Mundi, Dongaliya,<br>
+                Madhya Pradesh-450112
+            </td>
+            <td>
+                <b>Report No.:</b> 251120/OSTLPL/02<br>
+                <b>Date of Receipt:</b> 20/11/2025<br>
+                <b>Letter Ref. No.:</b> Nil<br>
+                <b>Date of Testing:</b> 21/11/2025 - 28/11/2025<br>
+                <b>Date of Report:</b> 29/11/2025
+            </td>
+        </tr>
+    </table>
+
+    <div class="sample-info-box">
+        <b>Sample Description:</b> Flyash<br>
+        <b>Client Name:</b> PSP Projects Ltd., PSP House, Opp. Celesta Courtyard, Opposite Lane of Vikram Nagar Colony, Iscon-Ambali Road,<br>Ahmedabad-380058<br>
+        <b>Agency Name:</b> Subh Enterprises
+    </div>
+
+    <div class="table-title-bar">TEST REPORT</div>
+
+    <!-- Main Table -->
+    <div class="watermark-container">
+        <div class="watermark">OSTL</div>
+        <table class="data-table">
+            <thead>
+                <tr>
+                    <th width="6%">Sr.<br>No.</th>
+                    <th width="32%">Test Parameters</th>
+                    <th width="12%">Units of<br>Measurements</th>
+                    <th width="12%">Results</th>
+                    <th width="20%">Requirement as per<br>IS 3812(P-1):2013<br>(Siliceous Fly Ash)</th>
+                    <th width="18%">Method Reference</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Section A -->
+                <tr>
+                    <td><b>(A)</b></td>
+                    <td colspan="5" class="section-header">Physical Characteristics</td>
+                </tr>
+                <tr>
+                    <td>1.</td>
+                    <td class="text-left">Sieve Analysis,<br>(Retained on 45Micron)</td>
+                    <td>% by wet<br>sieving</td>
+                    <td>28.5</td>
+                    <td>34 Max.</td>
+                    <td>IS1727:1967,<br>R/A.2013</td>
+                </tr>
+                <tr>
+                    <td>2.</td>
+                    <td class="text-left">Fineness<br>(Blaine's air Permeability)</td>
+                    <td>m²/kg</td>
+                    <td>360</td>
+                    <td>320 Min.</td>
+                    <td>IS1727:1967,<br>R/A.2013</td>
+                </tr>
+                <tr>
+                    <td>3.</td>
+                    <td class="text-left">Comparative Compressive<br>Strength, (at 28 days)</td>
+                    <td>N/mm²</td>
+                    <td>Awaited</td>
+                    <td>Not less than 80% of the<br>strength of corresponding<br>plain cement mortar cube</td>
+                    <td>IS1727:1967,<br>R/A.2013</td>
+                </tr>
+                <tr>
+                    <td>4.</td>
+                    <td class="text-left">Soundness by Autoclave Expansion,</td>
+                    <td>%</td>
+                    <td>0.05</td>
+                    <td>0.8 Max.</td>
+                    <td>IS1727:1967,<br>R/A.2013</td>
+                </tr>
+
+                <!-- Section B -->
+                <tr>
+                    <td><b>(B)</b></td>
+                    <td colspan="5" class="section-header">Chemical Characteristics</td>
+                </tr>
+                <tr>
+                    <td>1.</td>
+                    <td class="text-left">Silicon Dioxide +Aluminium Oxide<br>+Iron Oxide</td>
+                    <td rowspan="6" style="vertical-align: middle;">% by mass</td>
+                    <td>85.5</td>
+                    <td>70 Min.</td>
+                    <td>IS1727:1967,<br>R/A.2013</td>
+                </tr>
+                <tr>
+                    <td>2.</td>
+                    <td class="text-left">Silicon Oxide (as SiO₂)</td>
+                    <td>51.0</td>
+                    <td>35 Min.</td>
+                    <td>IS1727:1967,<br>R/A.2013</td>
+                </tr>
+                <tr>
+                    <td>3.</td>
+                    <td class="text-left">Magnesium Oxide (as MgO)</td>
+                    <td>1.15</td>
+                    <td>5 Max.</td>
+                    <td>IS1727:1967,<br>R/A.2013</td>
+                </tr>
+                <tr>
+                    <td>4.</td>
+                    <td class="text-left">Total Sulphur Content<br>(as SO₃)</td>
+                    <td>1.22</td>
+                    <td>3 Max.</td>
+                    <td>IS1727:1967,<br>R/A.2013</td>
+                </tr>
+                <tr>
+                    <td>5.</td>
+                    <td class="text-left">Total Chloride</td>
+                    <td>0.021</td>
+                    <td>0.05 Max.</td>
+                    <td>IS 4032:1985</td>
+                </tr>
+                <tr>
+                    <td>6.</td>
+                    <td class="text-left">Loss on Ignition</td>
+                    <td>1.20</td>
+                    <td>5 Max.</td>
+                    <td>IS1727:1967,<br>R/A.2013</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Remarks & End Report -->
+    <div class="remarks">
+        Remarks: The Sample conforms to IS 3812(P-1):2013 for Fly Ash except S.No.3 test of part A w.r.t. above test.
+    </div>
+
+    <div class="end-report">
+        **End of Report**
+    </div>
+
+    <div class="page-num">
+        Page 01 of 01
+    </div>
+
+    <!-- Signatures -->
+    <div class="signatures">
+        <div class="sign-left">
+            <div class="signature-cursive">Rajneesh</div>
+            <div class="sign-text">Reviewed By</div>
+        </div>
+
+        <div class="stamp-container">
+            <!-- Simulated Laboratory Stamp via SVG -->
+            <svg width="130" height="130" viewBox="0 0 130 130" style="transform: rotate(-15deg);">
+                <defs>
+                    <path id="circlePath" d="M 65, 65 m -45, 0 a 45,45 0 1,1 90,0 a 45,45 0 1,1 -90,0" />
+                    <path id="innerCirclePath" d="M 65, 65 m -30, 0 a 30,30 0 1,1 60,0 a 30,30 0 1,1 -60,0" />
+                </defs>
+                <circle cx="65" cy="65" r="50" fill="none" stroke="#5c6e81" stroke-width="2" />
+                <circle cx="65" cy="65" r="32" fill="none" stroke="#5c6e81" stroke-width="1" />
+                <text font-family="Arial" font-size="9" font-weight="bold" fill="#5c6e81" letter-spacing="1">
+                    <textPath href="#circlePath" startOffset="50%" text-anchor="middle">SWASTIK TESTING LABORATORY PVT. LTD.</textPath>
+                </text>
+                <text font-family="Arial" font-size="9" font-weight="bold" fill="#5c6e81" letter-spacing="1">
+                    <textPath href="#innerCirclePath" startOffset="75%" text-anchor="middle">• NEW DELHI •</textPath>
+                </text>
+                <text x="65" y="70" font-family="'Brush Script MT', cursive" font-size="20" fill="#2c3e50" text-anchor="middle">Shill</text>
+            </svg>
+        </div>
+
+        <div class="sign-right">
+            <div style="height: 35px;"></div> <!-- Spacing for signature -->
+            <div class="sign-text">Authorized Signatory</div>
+        </div>
+    </div>
+
+    <!-- Footer Terms -->
+    <div class="footer-terms">
+        <div style="display: flex;">
+            <strong>Remarks : </strong>
+            <ol>
+                <li>The Results listed refer only to the above tested samples & applicable parameters. Endorsement of products is neither inferred nor implied.</li>
+                <li>Liability of laboratory is limited to the invoiced amount only.</li>
+                <li>The perishable samples will be destroyed after 15 days and non perishable sample(s) will be destroyed after 30 days of the date of issue of test Report or unless otherwise specified.</li>
+                <li>Laboratory will not be held responsible for the authenticity of any photocopied, forged and or partially presented test reports.</li>
+                <li>Laboratory will ensure all corrective action as per our policy in case of any discrepancy in any sample tested by the laboratory.</li>
+                <li>The report is not to be reproduced wholly or in part and cannot be used as an evidence in the court of law and shall not be used in the advertising media without prior permission from the CEO.</li>
+            </ol>
+        </div>
+    </div>
+
+    <!-- Footer Address Banner -->
+    <div class="footer-banner">
+        <b>Address : Plot No. 213/2, Village - Nangli Sakrawati, Najafgarh, New Delhi-110043</b><br>
+        Email : ostlpl2324@gmail.com | 📞 7011438776, 8800309694, 9899429139
+    </div>
+
+</div>
+
+</body>
+</html>
